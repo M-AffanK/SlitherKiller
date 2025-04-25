@@ -5,4 +5,5 @@ class AppRoutes {
   static const setting = '/setting';
   static const credits = '/https://youtu.be/dQw4w9WgXcQ?si=4i9-PwqC2ntoUfOD';
   static const login = '/login';
+  static const signUp = '/signup';
 }

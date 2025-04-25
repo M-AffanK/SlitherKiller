@@ -29,7 +29,7 @@ class MultiplayerScreen extends StatelessWidget {
                   child: SizedBox(
                     height: MediaQuery.of(context).size.height * 0.15,
                     child: Image.asset(
-                      AppRoutes.multiplayer,
+                      AppImages.multiplayer,
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -44,7 +44,7 @@ class MultiplayerScreen extends StatelessWidget {
                       Get.offNamed(AppRoutes.game);
                     },
                     child: Text(
-                      'Join Lobby',
+                      'Create Lobby',
                       style: AppTexts.fontJustAnotherHandw400s130.copyWith(
                         fontSize: 0.11.sh,
                       ),

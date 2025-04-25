@@ -91,7 +91,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         Get.toNamed('/login');
                       },
                     ),
-                    CustomTextButton(text: 'Sign Up', onTap: () {}),
+                    CustomTextButton(
+                      text: 'Sign Up',
+                      onTap: () {
+                        Get.toNamed('/signup');
+                      },
+                    ),
                   ],
                 ),
               ),

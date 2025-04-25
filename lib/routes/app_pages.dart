@@ -5,6 +5,7 @@ import 'package:slitherkiller/screens/main_screen.dart';
 import 'package:slitherkiller/screens/multiplayer_screen.dart';
 import 'package:slitherkiller/screens/settings_screen.dart';
 import 'package:slitherkiller/screens/login_screen.dart';
+import 'package:slitherkiller/screens/signup_screen.dart';
 
 class AppPages {
   static final appRoutes = [
@@ -13,5 +14,6 @@ class AppPages {
     GetPage(name: AppRoutes.multiplayer, page: () => MultiplayerScreen()),
     GetPage(name: AppRoutes.setting, page: () => SettingsScreen()),
     GetPage(name: AppRoutes.login, page: () => LoginScreen()),
+    GetPage(name: AppRoutes.signUp, page: () => SignUpScreen()),
   ];
 }
