@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:slitherkiller/screens/main_screen.dart';
 import 'Routes/app_pages.dart';
 import 'Routes/app_routes.dart';
 import 'package:get/get.dart';
@@ -22,16 +23,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: Size(360, 690),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (_, child) {
-          return GetMaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(), 
-            getPages: AppPages.appRoutes,
-            initialRoute: AppRoutes.game,
-          );
-        });
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(),
+          getPages: AppPages.appRoutes,
+          initialRoute: AppRoutes.main,
+        );
+      },
+    );
   }
 }

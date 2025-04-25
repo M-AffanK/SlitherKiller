@@ -12,16 +12,9 @@ class SnakeGame extends StatefulWidget {
 }
 
 class _SnakeGameState extends State<SnakeGame> {
-  static const int rows = 20;
-  static const int columns = 20;
+  static const double targetCellSize = 20.0;
   late SnakeGameController controller;
-
-  @override
-  void initState() {
-    super.initState();
-    controller = SnakeGameController(rows: rows, columns: columns);
-    controller.startGame(onUpdate: _onUpdate, onGameOver: _onGameOver);
-  }
+  bool initialized = false;
 
   void _onUpdate() => setState(() {});
   void _onGameOver() => setState(() {});
@@ -29,18 +22,36 @@ class _SnakeGameState extends State<SnakeGame> {
       controller.startGame(onUpdate: _onUpdate, onGameOver: _onGameOver);
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: LayoutBuilder(
         builder: (context, constraints) {
-          final cellSize =
-              (constraints.maxWidth / columns)
-                  .clamp(0, constraints.maxHeight / rows)
-                  .toDouble();
+          final screenWidth = constraints.maxWidth;
+          final screenHeight = constraints.maxHeight;
+
+          final columns = (screenWidth / targetCellSize).floor();
+          final rows = (screenHeight / targetCellSize).floor();
+
+          final cellSize = screenWidth / columns;
           final boardWidth = cellSize * columns;
           final boardHeight = cellSize * rows;
 
-          return Center(
+          if (!initialized) {
+            controller = SnakeGameController(rows: rows, columns: columns);
+            controller.startGame(onUpdate: _onUpdate, onGameOver: _onGameOver);
+            initialized = true;
+          }
+
+          return Container(
+            width: screenWidth,
+            height: screenHeight,
+            color: AppColors.green,
             child: Stack(
               children: [
                 Container(
@@ -74,40 +85,43 @@ class _SnakeGameState extends State<SnakeGame> {
                     ),
                   ),
                 if (controller.isGameOver)
-                  Container(
-                    width: boardWidth,
-                    height: boardHeight,
-                    color: Colors.black.withOpacity(0.7),
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Text(
-                            "Game Over",
-                            style: TextStyle(
-                              color: AppColors.white,
-                              fontSize: 32,
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.green,
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 24,
-                                vertical: 12,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
+                  Positioned.fill(
+                    child: Container(
+                      color: Colors.black.withOpacity(0.7),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              "Game Over",
+                              style: TextStyle(
+                                color: AppColors.white,
+                                fontSize: 32,
                               ),
                             ),
-                            onPressed: restartGame,
-                            child: const Text(
-                              "Restart",
-                              style: TextStyle(fontSize: 20),
+                            const SizedBox(height: 20),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.green,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 24,
+                                  vertical: 12,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              onPressed: () {
+                                controller.updateDimensions(rows, columns);
+                                restartGame();
+                              },
+                              child: const Text(
+                                "Restart",
+                                style: TextStyle(fontSize: 20),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -117,11 +131,5 @@ class _SnakeGameState extends State<SnakeGame> {
         },
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
   }
 }
