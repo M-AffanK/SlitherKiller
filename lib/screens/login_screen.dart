@@ -27,30 +27,26 @@ class LoginScreen extends StatelessWidget {
               child: Image.asset(AppImages.back, height: 60.h, width: 60.h),
             ),
           ),
+          Positioned(
+            top: -10.h,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Text(
+                'Login',
+                style: TextStyle(
+                  fontFamily: 'JustAnotherHand',
+                  fontSize: 0.16.sh,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Positioned(
-                  top: -10.h,
-                  left: 0,
-                  right: 0,
-                  child: Center(
-                    child: Text(
-                      'Login',
-                      style: TextStyle(
-                        fontFamily: 'JustAnotherHand',
-                        fontSize: 0.16.sh,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  top: 160.h,
-                  left: 30.w,
-                  right: 30.w,
-
+                SizedBox(
                   child: const Text(
                     'Username or Email:',
                     style: TextStyle(
@@ -70,11 +66,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(
-                  top: 160.h,
-                  left: 30.w,
-                  right: 30.w,
-
+                SizedBox(
                   child: const Text(
                     'Password:',
                     style: TextStyle(
