@@ -17,6 +17,16 @@ class LoginScreen extends StatelessWidget {
           Positioned.fill(
             child: Image.asset(AppImages.mainBg, fit: BoxFit.cover),
           ),
+          Positioned(
+            top: 20.h,
+            right: 10.h,
+            child: InkWell(
+              onTap: () {
+                Get.back();
+              },
+              child: Image.asset(AppImages.back, height: 60.h, width: 60.h),
+            ),
+          ),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -96,7 +106,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   onPressed: () {
                     // TODO: Implement login functionality
-                    Get.offNamed(AppRoutes.setting);
+                    Get.back();
                   },
                   child: const Text(
                     'Done',
