@@ -85,7 +85,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    CustomTextButton(text: 'Login', onTap: () {}),
+                    CustomTextButton(
+                      text: 'Login',
+                      onTap: () {
+                        Get.toNamed('/login');
+                      },
+                    ),
                     CustomTextButton(text: 'Sign Up', onTap: () {}),
                   ],
                 ),

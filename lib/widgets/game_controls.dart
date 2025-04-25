@@ -6,7 +6,11 @@ class GameControls extends StatelessWidget {
   final SnakeGameController controller;
   final int columns;
 
-  const GameControls({super.key, required this.controller, required this.columns});
+  const GameControls({
+    super.key,
+    required this.controller,
+    required this.columns,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,25 +18,25 @@ class GameControls extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         IconButton(
-          icon: const Icon(Icons.arrow_drop_up, color: AppColors.white),
+          icon: const Icon(Icons.arrow_drop_up, color: AppColors.black),
           onPressed: () => controller.changeDirection(-columns),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
-              icon: const Icon(Icons.arrow_left, color: AppColors.white),
+              icon: const Icon(Icons.arrow_left, color: AppColors.black),
               onPressed: () => controller.changeDirection(-1),
             ),
             const SizedBox(width: 50),
             IconButton(
-              icon: const Icon(Icons.arrow_right, color: AppColors.white),
+              icon: const Icon(Icons.arrow_right, color: AppColors.black),
               onPressed: () => controller.changeDirection(1),
             ),
           ],
         ),
         IconButton(
-          icon: const Icon(Icons.arrow_drop_down, color: AppColors.white),
+          icon: const Icon(Icons.arrow_drop_down, color: AppColors.black),
           onPressed: () => controller.changeDirection(columns),
         ),
       ],

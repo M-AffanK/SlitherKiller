@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:slitherkiller/Routes/app_routes.dart';
 import 'package:slitherkiller/utils/app_images.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -58,10 +59,21 @@ class MainScreen extends StatelessWidget {
           Positioned(
             bottom: 10,
             right: 0,
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.15,
-              child: Image.asset(AppImages.creditText, fit: BoxFit.contain),
+            child: IconButton(
+              icon: Image.asset(
+                AppImages.creditText,
+                width: 40.h,
+                height: 48.h,
+              ),
+              onPressed: () => _launchVideo(AppRoutes.credits),
+              // () {
+              //   Get.toNamed(AppRoutes.credits);
+              // },
             ),
+            // SizedBox(
+            //   height: MediaQuery.of(context).size.height * 0.15,
+            //   child: Image.asset(AppImages.creditText, fit: BoxFit.contain),
+            // ),
           ),
 
           Positioned(
@@ -77,5 +89,14 @@ class MainScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+void _launchVideo(String videoURL) async {
+  final Uri url = Uri.parse(videoURL);
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url, mode: LaunchMode.externalApplication);
+  } else {
+    throw 'Could not launch $videoURL';
   }
 }

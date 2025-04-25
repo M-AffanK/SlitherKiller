@@ -3,12 +3,12 @@ import 'dart:math';
 import 'dart:ui';
 
 class SnakeGameController {
-  final int rows;
-  final int columns;
+  int rows;
+  int columns;
   final Duration tickRate;
 
-  List<int> snake = [45, 65, 85];
-  int direction = 1;
+  List<int> snake = [];
+  int direction = 0;
   int food = 0;
   bool isGameOver = false;
   Timer? timer;
@@ -20,9 +20,7 @@ class SnakeGameController {
     required this.rows,
     required this.columns,
     this.tickRate = const Duration(milliseconds: 200),
-  }) {
-    food = generateNewFood();
-  }
+  });
 
   void startGame({
     required VoidCallback onUpdate,
@@ -31,13 +29,21 @@ class SnakeGameController {
     this.onUpdate = onUpdate;
     this.onGameOver = onGameOver;
 
-    snake = [45, 65, 85];
+    snake = [columns * 2 + 2, columns * 2 + 3, columns * 2 + 4];
     direction = 1;
     food = generateNewFood();
     isGameOver = false;
 
     timer?.cancel();
     timer = Timer.periodic(tickRate, (_) => updateGame());
+  }
+
+  void updateDimensions(int newRows, int newColumns) {
+    if (newRows != rows || newColumns != columns) {
+      rows = newRows;
+      columns = newColumns;
+      food = generateNewFood();
+    }
   }
 
   void updateGame() {
