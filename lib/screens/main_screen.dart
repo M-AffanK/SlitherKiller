@@ -40,22 +40,28 @@ class MainScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 30.h),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  child: Image.asset(
+                    AppImages.slitherkillerText,
+                    fit: BoxFit.contain,
+                  ),
+                ),
               ],
             ),
           ),
 
-          Positioned(
-            bottom: 40,
-            left: 100.w,
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.25,
-              child: Image.asset(
-                AppImages.slitherkillerText,
-                fit: BoxFit.contain,
-              ),
-            ),
-          ),
-
+          // Positioned(
+          //   bottom: 40,
+          //   left: 100.w,
+          //   child: SizedBox(
+          //     height: MediaQuery.of(context).size.height * 0.25,
+          //     child: Image.asset(
+          //       AppImages.slitherkillerText,
+          //       fit: BoxFit.contain,
+          //     ),
+          //   ),
+          // ),
           Positioned(
             bottom: 10,
             right: 0,
