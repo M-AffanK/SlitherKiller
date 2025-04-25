@@ -23,7 +23,7 @@ class MainScreen extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Get.offNamed(AppRoutes.multiplayer);
+                    Get.toNamed(AppRoutes.multiplayer);
                   },
                   child: Container(
                     width: 100.w,
