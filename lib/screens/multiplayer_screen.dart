@@ -36,12 +36,7 @@ class MultiplayerScreen extends StatelessWidget {
                     onTap: () {
                       Get.offNamed(AppRoutes.game);
                     },
-                    child: Text(
-                      'Create Lobby',
-                      style: AppTexts.fontJustAnotherHandw400s130.copyWith(
-                        fontSize: 0.11.sh,
-                      ),
-                    ),
+                    child: Image.asset(AppImages.createLobby),
                   ),
                 ),
                 SizedBox(height: 20.h),
@@ -50,12 +45,7 @@ class MultiplayerScreen extends StatelessWidget {
                     onTap: () {
                       Get.offNamed(AppRoutes.game);
                     },
-                    child: Text(
-                      'Join Lobby',
-                      style: AppTexts.fontJustAnotherHandw400s130.copyWith(
-                        fontSize: 0.11.sh,
-                      ),
-                    ),
+                    child: Image.asset(AppImages.joinLobby),
                   ),
                 ),
               ],
