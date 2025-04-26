@@ -47,14 +47,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 left: 0,
                 right: 0,
                 child: Center(
-                  child: Text(
-                    'Settings',
-                    style: TextStyle(
-                      fontFamily: 'JustAnotherHand',
-                      fontSize: 0.16.sh,
-                      color: Colors.black,
-                    ),
-                  ),
+                  child: Image.asset(AppImages.settings, height: 200.h, width: 200.h),
+                  // Text(
+                  //   'Settings',
+                  //   style: TextStyle(
+                  //     fontFamily: 'JustAnotherHand',
+                  //     fontSize: 0.16.sh,
+                  //     color: Colors.black,
+                  //   ),
+                  // ),
                 ),
               ),
               Positioned(

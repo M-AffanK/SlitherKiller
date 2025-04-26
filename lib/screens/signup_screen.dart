@@ -32,14 +32,7 @@ class SignUpScreen extends StatelessWidget {
             left: 0,
             right: 0,
             child: Center(
-              child: Text(
-                'Sign Up',
-                style: TextStyle(
-                  fontFamily: 'JustAnotherHand',
-                  fontSize: 0.16.sh,
-                  color: Colors.black,
-                ),
-              ),
+              child: Image.asset(AppImages.signup, height: 150.h, width: 150.h),
             ),
           ),
           Center(
