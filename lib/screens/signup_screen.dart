@@ -6,8 +6,15 @@ import 'package:slitherkiller/utils/app_images.dart';
 import 'package:slitherkiller/utils/app_colors.dart';
 import 'package:slitherkiller/utils/app_text.dart';
 
-class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatefulWidget {
+  @override
+  _SignUpScreen createState() => _SignUpScreen();
+}
+
+class _SignUpScreen extends State<SignUpScreen> {
+  // SignUpScreen({Key? key}) : super(key: key);
+  final TextEditingController _controller = TextEditingController();
+  String username = '';
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +39,15 @@ class SignUpScreen extends StatelessWidget {
             left: 0,
             right: 0,
             child: Center(
-              child: Image.asset(AppImages.signup, height: 150.h, width: 150.h),
+              child: Image.asset(AppImages.signup, height: 200.h, width: 200.h),
             ),
           ),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(height: 60.h),
                 SizedBox(
                   child: const Text(
                     'Username:',
@@ -51,12 +60,18 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 SizedBox(
-                  width: 300,
+                  width: double.infinity,
                   child: TextFormField(
+                    controller: _controller,
                     decoration: const InputDecoration(
                       labelText: 'John-Cloe_1234',
                       border: OutlineInputBorder(),
                     ),
+                      onChanged: (value) {
+                        setState(() {
+                          username = value;
+                        });
+                    }
                   ),
                 ),
                 SizedBox(
@@ -71,7 +86,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 SizedBox(
-                  width: 300,
+                  width: double.infinity,
                   child: TextFormField(
                     decoration: const InputDecoration(
                       labelText: 'John Cloe',
@@ -92,7 +107,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 SizedBox(
-                  width: 300,
+                  width: double.infinity,
                   child: TextFormField(
                     decoration: const InputDecoration(
                       labelText: 'johncloe@gmail.com',
@@ -112,7 +127,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 SizedBox(
-                  width: 300,
+                  width: double.infinity,
                   child: TextFormField(
                     decoration: const InputDecoration(
                       labelText: 'abcd1234!@#\$',
@@ -123,26 +138,31 @@ class SignUpScreen extends StatelessWidget {
                 ),
 
                 const SizedBox(height: 20),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.lightGreen,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 50,
-                      vertical: 15,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.lightGreen,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 50,
+                          vertical: 15,
+                        ),
+                      ),
+                      onPressed: () {
+                        // TODO: Implement login functionality
+                        Get.back();
+                      },
+                      child: const Text(
+                        'Done',
+                        style: TextStyle(
+                          fontFamily: 'JustAnotherHand',
+                          fontSize: 20,
+                          color: Colors.black,
+                        ),
+                      ),
                     ),
-                  ),
-                  onPressed: () {
-                    // TODO: Implement login functionality
-                    Get.back();
-                  },
-                  child: const Text(
-                    'Done',
-                    style: TextStyle(
-                      fontFamily: 'JustAnotherHand',
-                      fontSize: 20,
-                      color: Colors.black,
-                    ),
-                  ),
+                  ],
                 ),
               ],
             ),

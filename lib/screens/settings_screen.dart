@@ -48,14 +48,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 right: 0,
                 child: Center(
                   child: Image.asset(AppImages.settings, height: 200.h, width: 200.h),
-                  // Text(
-                  //   'Settings',
-                  //   style: TextStyle(
-                  //     fontFamily: 'JustAnotherHand',
-                  //     fontSize: 0.16.sh,
-                  //     color: Colors.black,
-                  //   ),
-                  // ),
                 ),
               ),
               Positioned(
@@ -65,7 +57,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: Column(
                   children: [
                     SliderRowWidget(
-                      label: 'Music:',
+                      label: 'Music:   ',
                       value: musicValue,
                       onChanged: (value) => setState(() => musicValue = value),
                     ),
@@ -86,18 +78,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    CustomTextButton(
-                      text: 'Login',
-                      onTap: () {
-                        Get.toNamed('/login');
-                      },
+                    SizedBox(
+                      child: GestureDetector(
+                        onTap: () => Get.toNamed('/login'),
+                        child: Image.asset(AppImages.login, height: 150.h, width: 150.h),
+                      )
                     ),
-                    CustomTextButton(
-                      text: 'Sign Up',
-                      onTap: () {
-                        Get.toNamed('/signup');
-                      },
-                    ),
+                    SizedBox(width: 20.w),
+                    SizedBox(
+                      child: GestureDetector(
+                        onTap: () => Get.toNamed('/signup'),
+                        child: Image.asset(AppImages.signup, height: 150.h, width: 150.h),
+                      )
+                    )
                   ],
                 ),
               ),

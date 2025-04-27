@@ -16,21 +16,17 @@ class MultiplayerScreen extends StatelessWidget {
           Positioned.fill(
             child: Image.asset(AppImages.mainBg, fit: BoxFit.cover),
           ),
-
+          Positioned(
+            top: -10.h,
+            right: 0,
+            left: 0,
+            child: Image.asset(AppImages.multiplayer, height: 200.h,width: 200.h),
+          ),
           Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(height: 5.h),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.15,
-                  child: Image.asset(
-                    AppImages.multiplayer,
-                    fit: BoxFit.contain,
-                  ),
-                ),
                 SizedBox(height: 20.h),
-
                 SizedBox(
                   child: GestureDetector(
                     onTap: () {
@@ -39,7 +35,7 @@ class MultiplayerScreen extends StatelessWidget {
                     child: Image.asset(AppImages.createLobby),
                   ),
                 ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 40.h),
                 SizedBox(
                   child: GestureDetector(
                     onTap: () {

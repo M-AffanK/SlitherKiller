@@ -38,7 +38,10 @@ class LoginScreen extends StatelessWidget {
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // SizedBox(height: 200.h),
+
                 SizedBox(
                   child: const Text(
                     'Username or Email:',
@@ -49,9 +52,10 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 const SizedBox(height: 20),
                 SizedBox(
-                  width: 300,
+                  width: double.infinity,
                   child: TextFormField(
                     decoration: const InputDecoration(
                       labelText: 'Username or Email',
@@ -59,6 +63,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 SizedBox(
                   child: const Text(
                     'Password:',
@@ -69,9 +74,10 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 const SizedBox(height: 10),
                 SizedBox(
-                  width: 300,
+                  width: double.infinity,
                   child: TextFormField(
                     decoration: const InputDecoration(
                       labelText: 'Password',
@@ -81,6 +87,9 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.lightGreen,
@@ -101,6 +110,8 @@ class LoginScreen extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
+                ),
+                    ],
                 ),
               ],
             ),
